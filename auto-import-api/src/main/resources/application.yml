@@ -1,0 +1,40 @@
+
+
+spring:
+  datasource:
+    primary:
+      jdbc-url: jdbc:sqlserver://localhost:1434;databaseName=rabo_fbds
+      username: sa
+      password: woaini520
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    rpsc:
+      jdbc-url: jdbc:sqlserver://localhost:1434;databaseName=rabo_fbds
+      username: sa
+      password: woaini520
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+
+
+    type: com.zaxxer.hikari.HikariDataSource
+  jpa:
+    database-platform: org.hibernate.dialect.SQLServer2005Dialect
+    ddl-auto: none
+    show-sql: false
+    hibernate:
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+
+
+net:
+  riking:
+    etl:
+      source-path: E:\riking\source
+      backups-path: E:\riking\backups
+
+
+server:
+  port: 8080
+  tomcat:
+    uri-encoding: utf-8
+
