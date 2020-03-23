@@ -25,7 +25,7 @@ public class PropertiesConfig {
         jpaProperties.put("hibernate.hbm2ddl.auto", ddlAuto);
         jpaProperties.put("hibernate.dialect", databasePlatform);
         jpaProperties.put("hibernate.show_sql", showSql);
-        jpaProperties.put("hibernate.physical_naming_strategy", "net.riking.auto.util.strategy.TableNameStrategy");
+        jpaProperties.put("hibernate.physical_naming_strategy", "net.riking.auto.commmon.strategy.TableNameStrategy");
         // jpaProperties.put("hibernate.implicit_naming_strategy", "org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy");
         return jpaProperties;
     }

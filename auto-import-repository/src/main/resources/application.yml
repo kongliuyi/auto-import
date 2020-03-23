@@ -29,8 +29,8 @@ spring:
 net:
   riking:
     etl:
-      source-path: D:\riking\source
-      backups-path: D:\riking\backups
+      source-path: E:\riking\source
+      backups-path: E:\riking\backups
 
 
 server:

@@ -6,6 +6,7 @@ import net.riking.auto.commmon.inject.FieldAnnotationMetadata;
 import net.riking.auto.commmon.inject.InjectedElement;
 import net.riking.auto.commmon.inject.InjectionMetadata;
 
+import net.riking.auto.commmon.job.EtlApplication;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -18,8 +19,8 @@ import java.util.List;
 public class TxtFileHandle extends FileHandle<String> {
 
 
-    public TxtFileHandle(FieldAnnotationMetadata fieldAnnotationMetadata) {
-        super(fieldAnnotationMetadata);
+    public TxtFileHandle(FieldAnnotationMetadata fieldAnnotationMetadata, EtlApplication etlApplication) {
+        super(fieldAnnotationMetadata, etlApplication);
     }
 
     @Override
@@ -60,8 +61,7 @@ public class TxtFileHandle extends FileHandle<String> {
                 throw e;
             }
         }
-        this.baseData.put(metadata.getTargetClass(), resultList);
-
+        this.etlApplication.getBaseData().put(metadata.getTargetClass(), resultList);
         return null;
     }
 
