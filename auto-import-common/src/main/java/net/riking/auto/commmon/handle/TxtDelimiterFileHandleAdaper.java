@@ -7,10 +7,10 @@ import net.riking.auto.commmon.job.EtlApplication;
 import org.springframework.stereotype.Component;
 
 @Component
-public class TxtDelimiterFileHandle extends TxtFileHandle {
+public class TxtDelimiterFileHandleAdaper extends TxtFileHandleAdaper {
 
 
-    public TxtDelimiterFileHandle(FieldAnnotationMetadata fieldAnnotationMetadata, EtlApplication etlApplication) {
+    public TxtDelimiterFileHandleAdaper(FieldAnnotationMetadata fieldAnnotationMetadata, EtlApplication etlApplication) {
         super(fieldAnnotationMetadata, etlApplication);
     }
 

@@ -9,13 +9,15 @@ import net.riking.auto.commmon.job.EtlApplication;
 import net.riking.auto.commmon.validator.ValidationResult;
 import net.riking.auto.commmon.validator.ValidationUtils;
 
+
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-public abstract class FileHandle<T> implements Handle<T>, Parse<File>, Adapter<File> {
+public abstract class FileHandleAdaper implements HandleAdapter<File>, Parse<File> {
 
 
     List<String> data = new ArrayList<>();
@@ -31,7 +33,7 @@ public abstract class FileHandle<T> implements Handle<T>, Parse<File>, Adapter<F
     EtlApplication etlApplication;
 
 
-    public FileHandle(FieldAnnotationMetadata fieldAnnotationMetadata, EtlApplication etlApplication) {
+    public FileHandleAdaper(FieldAnnotationMetadata fieldAnnotationMetadata, EtlApplication etlApplication) {
         this.fieldAnnotationMetadata = fieldAnnotationMetadata;
         this.etlApplication = etlApplication;
     }
@@ -52,6 +54,18 @@ public abstract class FileHandle<T> implements Handle<T>, Parse<File>, Adapter<F
         return supports();
     }
 
+
+    public List<Object> handles(File flie) throws Throwable {
+        // 解析文件
+        parse(flie);
+        // 处理文件数据
+        return handles();
+    }
+
+    @Override
+    public abstract void parse(File file) throws IOException;
+
+    abstract List<Object> handles() throws Throwable;
 
     /**
      * 支持文件类型

@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 import java.lang.reflect.Field;
 
 @Component
-public class TxtFixedFileHandle extends TxtFileHandle {
+public class TxtFixedFileHandleAdaper extends TxtFileHandleAdaper {
 
-    public TxtFixedFileHandle(FieldAnnotationMetadata fieldAnnotationMetadata, EtlApplication etlApplication) {
+    public TxtFixedFileHandleAdaper(FieldAnnotationMetadata fieldAnnotationMetadata, EtlApplication etlApplication) {
         super(fieldAnnotationMetadata, etlApplication);
     }
     @Override

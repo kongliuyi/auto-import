@@ -16,10 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-public class TxtFileHandle extends FileHandle<String> {
+public class TxtFileHandleAdaper extends FileHandleAdaper {
 
 
-    public TxtFileHandle(FieldAnnotationMetadata fieldAnnotationMetadata, EtlApplication etlApplication) {
+    public TxtFileHandleAdaper(FieldAnnotationMetadata fieldAnnotationMetadata, EtlApplication etlApplication) {
         super(fieldAnnotationMetadata, etlApplication);
     }
 
@@ -43,6 +43,7 @@ public class TxtFileHandle extends FileHandle<String> {
         }
     }
 
+
     @Override
     public List<Object> handles() throws Throwable {
         Object target;
@@ -55,7 +56,7 @@ public class TxtFileHandle extends FileHandle<String> {
             try {
                 target = handles(line, metadata);
                 resultList.add(target);
-            } catch (Exception e) {
+            } catch (Throwable e) {
                 log.error("实体类" + metadata.getTargetClass() + "总长度" + elements.size() + ":数据文件第" + i + 1 + "行" + j + 1 + "列值【" + value + "】出错.", e);
                 log.error("数据行值：" + line);
                 throw e;
@@ -89,10 +90,10 @@ public class TxtFileHandle extends FileHandle<String> {
     /**
      * 默认采用方式为分割符
      *
-     * @param line
-     * @param field
-     * @param j
-     * @return
+     * @param line 数据行
+     * @param field 字段属性
+     * @param j  数组下表
+     * @return 返回指定的数据值
      * @throws Exception
      */
     String parseLine(String line, Field field, int j) throws Exception {
