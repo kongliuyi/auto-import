@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import net.riking.auto.commmon.event.listener.EventPublishingRunListener;
 import net.riking.auto.commmon.event.listener.SmartEtlApplicationListener;
-import net.riking.auto.commmon.handle.FileHandleAdaper;
+import net.riking.auto.commmon.handle.FileHandle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -25,7 +25,7 @@ public class EtlApplication {
     private EntityRepo entityRepo;
 
     @Autowired
-    private List<FileHandleAdaper> handles;
+    private List<FileHandle> handles;
 
     @Autowired
     private List<SmartEtlApplicationListener> listeners;
@@ -63,7 +63,7 @@ public class EtlApplication {
                 });
         });*/
 
-/*        FileHandleAdaper.forEach((a, b) -> {
+/*        FileHandle.forEach((a, b) -> {
             entityRepo.batchDelete(a, this.dataDate);
             entityRepo.batchInsert(b);
         });

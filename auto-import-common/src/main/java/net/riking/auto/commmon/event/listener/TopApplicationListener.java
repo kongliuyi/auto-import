@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.riking.auto.commmon.config.ETLProperties;
 import net.riking.auto.commmon.event.ApplicationPreparedEvent;
 import net.riking.auto.commmon.event.ApplicationStartingEvent;
-import net.riking.auto.commmon.handle.FileHandleAdaper;
+import net.riking.auto.commmon.handle.FileHandle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationEvent;
@@ -27,7 +27,7 @@ public class TopApplicationListener implements SmartEtlApplicationListener {
     private ETLProperties etlProperties;
 
     @Autowired
-    private List<FileHandleAdaper> handles;
+    private List<FileHandle> handles;
 
     @Override
     public boolean supportsEventType(Class<? extends ApplicationEvent> eventType) {
@@ -60,21 +60,21 @@ public class TopApplicationListener implements SmartEtlApplicationListener {
                 return;
             }
             for (File file : files) {
-                FileHandleAdaper fileHandleAdaper = getFileHandle(file);
-                if (fileHandleAdaper == null) {
-                    log.error(file.getName() + ":找不到对应 FileHandleAdaper，请核查...");
+                FileHandle fileHandleAdapter = getFileHandle(file);
+                if (fileHandleAdapter == null) {
+                    log.error(file.getName() + ":找不到对应 FileHandle，请核查...");
                     continue;
                 }
-                fileHandleAdaper.handles(file);
+                fileHandleAdapter.handles(file);
             }
 
         }
     }
 
 
-    protected FileHandleAdaper getFileHandle(File file) {
+    protected FileHandle getFileHandle(File file) {
 
-        for (FileHandleAdaper handle : handles) {
+        for (FileHandle handle : handles) {
             if (handle.supports(file))
                 return handle;
         }

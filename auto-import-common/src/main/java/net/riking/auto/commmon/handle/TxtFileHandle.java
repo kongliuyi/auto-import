@@ -16,10 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-public class TxtFileHandleAdaper extends FileHandleAdaper {
+public class TxtFileHandle extends FileHandle {
 
 
-    public TxtFileHandleAdaper(FieldAnnotationMetadata fieldAnnotationMetadata, EtlApplication etlApplication) {
+    public TxtFileHandle(FieldAnnotationMetadata fieldAnnotationMetadata, EtlApplication etlApplication) {
         super(fieldAnnotationMetadata, etlApplication);
     }
 
@@ -67,7 +67,7 @@ public class TxtFileHandleAdaper extends FileHandleAdaper {
     }
 
 
-    @Override
+
     public Object handles(String line, InjectionMetadata metadata) throws Throwable {
         List<InjectedElement> elements = metadata.getInjectedElements();
         line = new String(line.getBytes("gbk"), "ISO8859-1");

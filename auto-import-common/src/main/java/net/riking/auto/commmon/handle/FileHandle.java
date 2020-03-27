@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-public abstract class FileHandleAdaper implements HandleAdapter<File>, Parse<File> {
+public abstract class FileHandle implements Handle<File>, Parse<File> {
 
 
     List<String> data = new ArrayList<>();
@@ -33,7 +33,7 @@ public abstract class FileHandleAdaper implements HandleAdapter<File>, Parse<Fil
     EtlApplication etlApplication;
 
 
-    public FileHandleAdaper(FieldAnnotationMetadata fieldAnnotationMetadata, EtlApplication etlApplication) {
+    public FileHandle(FieldAnnotationMetadata fieldAnnotationMetadata, EtlApplication etlApplication) {
         this.fieldAnnotationMetadata = fieldAnnotationMetadata;
         this.etlApplication = etlApplication;
     }
